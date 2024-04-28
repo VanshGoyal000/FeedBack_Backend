@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const config = require('dotenv')
+config.config();
 try {
     mongoose.connect(`${process.env.DB_STRING_URL}`)
     console.log(`DB connected to mongodb`)
@@ -8,18 +10,19 @@ try {
 
 const userSchema = new mongoose.Schema(
     {
+        name : {
+            type: String,
+        },
         email:{
             type : String,
-            required : true,
-            unique : true ,
-            lowercase : true ,
-            trim :true ,
-            index : true
         },
-        password : {
-            type : String,
-            required : true
-        }
+        feedback : {
+            type : String
+        },
+        reviewOption: {
+            type: String,
+            enum: ['Unhappy', 'Neutral', 'Satisfied'] // Define the allowed options
+        }    
     } , {timestamps:true}
 )
 

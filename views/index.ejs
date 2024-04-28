@@ -1,15 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback Form</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+
+<style>
+  @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .container {
+    height: 80vh;
+  width: 25%; /* Adjust the width as needed */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #faf9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center horizontally and vertically */
+}
+
+.bg-primary {
+  background-image: linear-gradient(to left bottom, #ae9aff, #b7a7fa, #bfb4f4, #c8c1ee, #d1cde7, #ccd4f1, #c5dbf9, #bde2ff, #77eeff, #00f9fc, #00ffc7, #60ff78);
+  position: absolute;
+  height: 95vh;
+  width: 70%; /* Adjust the width as needed */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1.5%;
+}  
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 0px solid rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    box-sizing:border-box;
+  }
+
+  body,label,input[type="text"],input[type="email"],textarea,.btn {
+  color: #000000a1;
+  }
+
+  input[type="text"]:hover,
+input[type="email"]:hover,
+textarea:hover {
+  border-bottom: 2.5px solid #ae9aff;
+  transition: border-bottom 0.3s ease;
+}
+
+  .form-group textarea {
+    height: 80px;
+  }
+
+  .btn {
+  background-color: #fff;
+  font-family: inherit;
+  font-weight: bold;
+  padding: 1rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: 0.2s ease;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .panel-container {
+  background-color: #fff;
+  color: #555;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 17px;
+}
+
+.panel-container strong {
+  line-height: 10px;
+}
+
+.ratings-container {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.rating {
+  flex: 1;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  padding: 20px;
+  margin: 15px 20px;
+}
+
+.rating i {
+  font-size: 3rem;
+  border-radius: 50%;
+  color: #b4b4b4;
+  transition: 0.3s ease;
+}
+
+.rating:hover i,
+.rating.active i {
+  color: #fddc81;
+  background: radial-gradient(
+    circle,
+    rgb(97, 97, 114) 0%,
+    rgba(97, 97, 114) 55%,
+    rgba(255, 255, 255, 0) 56%
+  );
+  font-size: 3.5rem;
+}
+
+.rating small {
+  display: inline-block;
+  font-weight: 500;
+  margin: 10px 0 0;
+  color: #b4b4b4;
+}
+
+.rating:hover small,
+.rating.active small {
+  color: #555;
+}
+
+.fa-heart {
+  color: #dea1d4;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+</style>
 </head>
 <body>
-  <h2>This is Home</h2>
+  <div class="bg-primary">
+    
+  </div>
 
-  <h3><a href="http://localhost:3000/signup">Sign Up</a></h3>
-  <h3><a href="http://localhost:3000/login">Log In</a></h3>
-  
+<div class="container">
+  <h2>Feedback Form</h2>
+  <form  action="/" method="post">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" >
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="message">Message:</label>
+      <textarea id="message" name="feedback"></textarea>
+    </div>
+    <div id="panel" class="panel-container">
+      <strong>How was your experience?</strong>
+      <div class="ratings-container">
+        <div class="rating">
+          <i class="fa-solid fa-face-sad-tear"></i>
+          <small>Unhappy</small>
+        </div>
+    
+        <div class="rating active">
+          <i class="fa-solid fa-face-meh"></i>
+          <small>Neutral</small>
+        </div>
+    
+        <div class="rating">
+          <i class="fa-solid fa-face-grin-beam"></i>
+          <small>Satisfied</small>
+        </div>
+      </div>
+
+      <button type="submit" class="btn" id="send" >Send Review</button>
+    </div>
+  </form>
+</div>
 </body>
+<script>
+  const ratingsContainer = document.querySelector(".ratings-container");
+const sendBtn = document.querySelector("#send");
+const panel = document.querySelector("#panel");
+let selectedRating = "Neutral";
+
+// Event listener for both rating icons and radio buttons
+ratingsContainer.addEventListener("click", (e) => {
+  // Check if the click is on a rating icon
+  if (e.target.classList.contains("rating")) {
+    // Remove active class from all ratings
+    const ratings = document.querySelectorAll(".rating");
+    ratings.forEach((rating) => rating.classList.remove("active"));
+    // Add active class to the clicked rating
+    e.target.classList.add("active");
+    // Update selectedRating based on the clicked rating
+    selectedRating = e.target.querySelector("small").innerText;
+  }
+  // Check if the click is on a radio button
+  else if (e.target.type === "radio" && e.target.name === "reviewOption") {
+    // Update selectedRating based on the selected radio button
+    selectedRating = e.target.value;
+  }
+});
+
+sendBtn.addEventListener("click", (e) => {
+  e.preventDefault(); // Prevent default form submission
+
+  // Gather form data
+  const name = document.querySelector("#name").value;
+  const email = document.querySelector("#email").value;
+  const feedback = document.querySelector("#feedback").value;
+
+  const formData = { name, email, message, reviewOption: selectedRating };
+
+  // Send form data to the server using Fetch API
+  fetch("/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(formData)
+  })
+  .then(response => {
+    if (response.ok) {
+      return response.json(); // Parse response body as JSON
+    } else {
+      throw new Error("Failed to send form data to the server");
+    }
+  })
+  .then(data => {
+    // Manipulate DOM based on server response
+    panel.innerHTML = `
+      <i class="fas fa-heart"></i>
+      <strong>Thank You!</strong>
+      <br> 
+      <strong>Feedback: ${data.feedback}</strong>
+      <p>We'll use your feedback to improve our customer support</p>
+    `;
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });
+});
+
+</script>
+<!-- <script>
+  const ratings = document.querySelectorAll(".rating");
+const ratingsContainer = document.querySelector(".ratings-container");
+const sendBtn = document.querySelector("#send");
+const panel = document.querySelector("#panel");
+let selectedRating = "Satisfied";
+
+ratingsContainer.addEventListener("click", (e) => {
+  removeActive();
+  if (
+    e.target.parentNode.classList.contains("rating") &&
+    e.target.nextElementSibling
+  ) {
+    e.target.parentNode.classList.add("active");
+    selectedRating = e.target.nextElementSibling.innerHTML;
+  } else if (
+    e.target.parentNode.classList.contains("rating") &&
+    e.target.previousElementSibling
+  ) {
+    e.target.parentNode.classList.add("active");
+    selectedRating = e.target.innerHTML;
+  } else if (e.target.classList.contains("rating")) {
+    e.target.classList.add("active");
+    selectedRating = e.target.children[1].innerText;
+  }
+});
+
+sendBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  panel.innerHTML = `
+    <i class="fas fa-heart"></i>
+    <strong>Thank You!</strong>
+    <br> 
+    <strong>Feedback: ${selectedRating}</strong>
+    <p>We'll use your feedback to improve our customer support</p>
+    `;
+});
+
+function removeActive() {
+  ratings.forEach((rating) => rating.classList.remove("active"));
+}
+
+</script> -->
 </html>
